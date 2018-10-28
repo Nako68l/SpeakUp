@@ -1,0 +1,12 @@
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    button:nth-child(2){
+        margin: 0.7rem 0;
+    }
+    .facebook{
+        color: white;
+        background-color: #4267B2;
+    }
+}
