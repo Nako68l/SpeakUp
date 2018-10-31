@@ -12,8 +12,16 @@ import { environment } from 'environments/environment';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MaterialElementsModule } from './material-elements/material-elements.module';
+
 import { HomeModule } from './pages/home/home.module';
 import { LoginModalComponent } from './nav-bar/login-modal/login-modal.component';
+
+//fontawesome config
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { AccountModule } from './pages/account/account.module';
+library.add(faFacebook, faGoogle);
 
 @NgModule({
   declarations: [
@@ -33,7 +41,8 @@ import { LoginModalComponent } from './nav-bar/login-modal/login-modal.component
     AngularFireAuthModule,
     AngularFireStorageModule,
     MaterialElementsModule,
-
+    FontAwesomeModule,
+    
     HomeModule,
   ],
   providers: [],

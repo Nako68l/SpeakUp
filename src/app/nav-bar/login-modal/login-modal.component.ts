@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-login-modal',
@@ -13,6 +14,12 @@ export class LoginModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  sendEmailLink(){
+    const actionCodeSettings = {
+      url: environment.appUrl + '/account/settings'
+    }
   }
 
   onClose(){

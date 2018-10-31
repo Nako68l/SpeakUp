@@ -1,12 +1,25 @@
-.modal-content{
+@import 'variables';
+
+.modal-content {
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
-    button:nth-child(2){
+    button:nth-child(2) {
         margin: 0.7rem 0;
     }
-    .facebook{
-        color: white;
+    .facebook-btn {
         background-color: #4267B2;
+        color: white;
+        fa-icon {
+            margin-right: 0.6rem;
+            font-size: 1.5rem;
+            line-height: 0px;
+        }
+    }
+    .google-btn {
+        color: dimgray;
+        img {
+            height: 32px;
+            margin: 0 0.2rem 0.2rem -1.4rem;
+        }        
     }
 }
