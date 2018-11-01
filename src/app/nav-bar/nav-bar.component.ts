@@ -15,6 +15,6 @@ export class NavBarComponent implements OnInit {
   }
 
   onLogin(){
-    this.dialog.open(LoginModalComponent)
+    this.dialog.open(LoginModalComponent, {  autoFocus: false })
   }
 }

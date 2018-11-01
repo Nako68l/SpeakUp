@@ -1,9 +1,16 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
+.email-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-form__input {
+    margin-bottom: 1rem
+}
+
+.email-form__submit-btn {
+    mat-icon{
+        margin-right: 0.6rem;
+        margin-left: -1.9rem;
+        line-height: 1.4rem;
+    }
+}

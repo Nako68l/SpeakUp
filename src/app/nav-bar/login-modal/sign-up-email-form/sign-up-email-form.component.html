@@ -1,7 +1,8 @@
-<form class="example-form" [formGroup]="emailForm" (ngSubmit)="sendEmailLink()">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Email" formControlName="email" [errorStateMatcher]="matcher">
-    <mat-hint>Errors appear instantly!</mat-hint>
+<form class="email-form" [formGroup]="emailForm" (ngSubmit)="sendEmailLink()">
+  <mat-form-field class="email-form__input">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="awesome@person.you" formControlName="email" [errorStateMatcher]="matcher">
+    <mat-hint>Passwordless Sign Up</mat-hint>
     <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
       Please enter a valid email address
     </mat-error>
@@ -9,9 +10,8 @@
       Email is <strong>required</strong>
     </mat-error>
   </mat-form-field>
-  <!-- <mat-form-field> -->
-    <button mat-stroked-button type="submit" [disabled]="email.invalid">
-      Sign Up with email
-    </button>
-  <!-- </mat-form-field> -->
+  <button class="email-form__submit-btn" mat-stroked-button type="submit" [disabled]="email.invalid">
+    <mat-icon>email</mat-icon>
+    Sign Up with email
+  </button>
 </form>
