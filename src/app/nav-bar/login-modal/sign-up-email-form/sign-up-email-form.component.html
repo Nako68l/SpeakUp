@@ -13,6 +13,6 @@
   <button class="email-form__submit-btn" mat-stroked-button type="submit"
    [disabled]="sendingEmail || emailSent || email.invalid">
     <mat-icon>email</mat-icon>
-    Sign Up with email
+    Sign Up with email <mat-spinner *ngIf="sendingEmail" [diameter]="19"></mat-spinner>
   </button>
 </form>

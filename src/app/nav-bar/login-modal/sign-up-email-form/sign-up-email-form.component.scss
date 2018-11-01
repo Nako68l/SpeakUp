@@ -13,4 +13,13 @@
         margin-left: -1.9rem;
         line-height: 1.4rem;
     }
+    mat-spinner{
+        display: inline-flex;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        margin-right: 1rem;
+    }
 }

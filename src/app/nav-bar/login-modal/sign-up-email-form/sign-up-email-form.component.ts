@@ -35,13 +35,14 @@ export class SignUpEmailFormComponent implements OnInit {
   }
 
   async sendEmailLink() {
+    this.sendingEmail = true;
+    
     const actionCodeSettings = {
       url: environment.appUrl + '#/account/settings',
       handleCodeInApp: true,
     }
 
     try {
-      this.sendingEmail = true;
       await this.afAuth.auth.sendSignInLinkToEmail(
         this.email.value,
         actionCodeSettings
