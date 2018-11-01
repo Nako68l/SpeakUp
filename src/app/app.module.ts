@@ -10,29 +10,26 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'environments/environment';
 
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MaterialElementsModule } from './material-elements/material-elements.module';
 
 import { HomeModule } from './pages/home/home.module';
-import { LoginModalComponent } from './nav-bar/login-modal/login-modal.component';
 
 //fontawesome config
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { AccountModule } from './pages/account/account.module';
 library.add(faFacebook, faGoogle);
+//
+import { HelpersModule } from './helpers/helpers.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NavBarModule } from './nav-bar/nav-bar.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
-    LoginModalComponent,
-  ],
-  entryComponents: [
-    LoginModalComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -42,8 +39,11 @@ library.add(faFacebook, faGoogle);
     AngularFireStorageModule,
     MaterialElementsModule,
     FontAwesomeModule,
-    
+    HelpersModule,
+
     HomeModule,
+
+    NavBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

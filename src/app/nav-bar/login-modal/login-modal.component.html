@@ -1,8 +1,5 @@
 <div class="modal-content">
 
-  <button mat-stroked-button (click)="sendEmailLink()">
-    Sign Up with email
-  </button>
   <button class="google-btn" mat-raised-button>
     <img src="assets/icons/btn_google_light_normal_ios-2.png">
     Continue with Google
@@ -11,5 +8,5 @@
     <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
     Continue with Facebook
   </button>
-
+  <app-sign-up-email-form></app-sign-up-email-form>
 </div>
