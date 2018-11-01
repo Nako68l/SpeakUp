@@ -5,6 +5,7 @@ import { environment } from 'environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { emailRegEx } from '@helpers/helper-variables';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up-email-form',
@@ -23,6 +24,7 @@ export class SignUpEmailFormComponent implements OnInit {
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
     private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -51,7 +53,10 @@ export class SignUpEmailFormComponent implements OnInit {
       this.onSignUp.emit();
       this.emailSent = true;
     } catch (err) {
-      console.log(err.message, err)
+      this.toastr.error(err.message, 'Error', {
+        progressBar: true,
+        timeOut: 6000
+      })
     }
     this.sendingEmail = false;
   }

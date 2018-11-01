@@ -23,6 +23,7 @@ library.add(faFacebook, faGoogle);
 import { HelpersModule } from './helpers/helpers.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavBarModule } from './nav-bar/nav-bar.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NavBarModule } from './nav-bar/nav-bar.module';
     AngularFireStorageModule,
     MaterialElementsModule,
     FontAwesomeModule,
+    ToastrModule.forRoot(),
     HelpersModule,
 
     HomeModule,
