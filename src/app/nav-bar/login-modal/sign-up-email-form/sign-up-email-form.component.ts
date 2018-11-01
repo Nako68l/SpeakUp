@@ -4,6 +4,7 @@ import { SignUpEmailErrorStateMatcher } from '@helpers/sign-up-email-error-state
 import { environment } from 'environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { emailRegEx } from '@helpers/helper-variables';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class SignUpEmailFormComponent implements OnInit {
     this.emailForm = this.fb.group({
       email: ['', [
         Validators.required,
-        Validators.email,
+        Validators.pattern(emailRegEx),
       ]]
     })
   }
