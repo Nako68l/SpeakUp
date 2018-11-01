@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { SignUpEmailErrorStateMatcher } from '@helpers/sign-up-email-error-state-matcher/sign-up-email-error-state-matcher';
 import { environment } from 'environments/environment';
-import { MatFormFieldControl } from '@angular/material';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,12 +12,17 @@ import { MatFormFieldControl } from '@angular/material';
   styleUrls: ['./sign-up-email-form.component.scss']
 })
 export class SignUpEmailFormComponent implements OnInit {
+  //TODO: make email sent and sending 2 way inputs or just outputs, make login modal spiner and email sent page
   emailForm: FormGroup;
-
+  emailSent: boolean = false;
+  sendingEmail: boolean = false;
   matcher = new SignUpEmailErrorStateMatcher();
 
-  constructor(private fb: FormBuilder) {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private afAuth: AngularFireAuth,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.emailForm = this.fb.group({
@@ -27,13 +33,28 @@ export class SignUpEmailFormComponent implements OnInit {
     })
   }
 
-  sendEmailLink() {
+  async sendEmailLink() {
     const actionCodeSettings = {
-      url: environment.appUrl + '/account/settings'
+      url: environment.appUrl + '#/account/settings',
+      handleCodeInApp: true,
     }
+
+    try {
+      this.sendingEmail = true;
+      await this.afAuth.auth.sendSignInLinkToEmail(
+        this.email.value,
+        actionCodeSettings
+      );
+      window.localStorage.setItem('emailForSignIn', this.email.value);
+      this.emailSent = true;
+    } catch (err) {
+      console.log(err.message, err)
+      // this.errorMessage = err.message;
+    }
+    this.sendingEmail = false;
   }
 
   get email() {
-    return this.emailForm.get('email') as FormControl;
+    return this.emailForm.get('email');
   }
 }

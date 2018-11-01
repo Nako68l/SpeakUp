@@ -1,4 +1,4 @@
-<form class="email-form" [formGroup]="emailForm" (ngSubmit)="sendEmailLink()">
+<form class="email-form" [formGroup]="emailForm" (ngSubmit)="!this.sendingEmail && sendEmailLink()">
   <mat-form-field class="email-form__input">
     <mat-label>Email</mat-label>
     <input matInput placeholder="awesome@person.you" formControlName="email" [errorStateMatcher]="matcher">
@@ -10,7 +10,7 @@
       Email is <strong>required</strong>
     </mat-error>
   </mat-form-field>
-  <button class="email-form__submit-btn" mat-stroked-button type="submit" [disabled]="email.invalid">
+  <button class="email-form__submit-btn" mat-stroked-button type="submit" [disabled]="sendingEmail || emailSent || email.invalid">
     <mat-icon>email</mat-icon>
     Sign Up with email
   </button>
