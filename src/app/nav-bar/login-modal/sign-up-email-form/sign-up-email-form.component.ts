@@ -39,7 +39,7 @@ export class SignUpEmailFormComponent implements OnInit {
     this.sendingEmail = true;
 
     const actionCodeSettings = {
-      url: environment.appUrl + '#/account/settings',
+      url: environment.appUrl + 'account/settings',
       handleCodeInApp: true,
     }
 

@@ -1,3 +1,4 @@
-<p>
-  settings works BITCH
+<p *ngIf="user | async">
+  Hello fellow User
+  {{user | json}}
 </p>
