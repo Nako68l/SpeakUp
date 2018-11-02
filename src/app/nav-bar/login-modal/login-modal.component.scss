@@ -23,3 +23,18 @@
         }        
     }
 }
+.email-sent__info-block{
+    @include centered;
+    position: relative;
+    height: 100%;
+    text-align: center;
+    strong{
+        font-size: 1.5rem;
+    }
+    mat-icon {
+        align-self: flex-start;
+        position: absolute;
+        left: 0;
+        cursor: pointer;
+    }
+}

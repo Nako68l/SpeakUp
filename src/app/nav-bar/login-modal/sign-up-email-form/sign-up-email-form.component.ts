@@ -18,12 +18,11 @@ export class SignUpEmailFormComponent implements OnInit {
   emailForm: FormGroup;
   matcher = new SignUpEmailErrorStateMatcher();
 
-  @Output() onSignUp = new EventEmitter<string>();
+  @Output() onSignUp = new EventEmitter();
 
   constructor(
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
-    private router: Router,
     private toastr: ToastrService
   ) { }
 
@@ -46,11 +45,11 @@ export class SignUpEmailFormComponent implements OnInit {
 
     try {
       await this.afAuth.auth.sendSignInLinkToEmail(
-        this.email.value,
+        this.userEmail,
         actionCodeSettings
       );
-      window.localStorage.setItem('emailForSignIn', this.email.value);
-      this.onSignUp.emit();
+      window.localStorage.setItem('emailForSignIn', this.userEmail);
+      this.onSignUp.emit(this.userEmail);
       this.emailSent = true;
     } catch (err) {
       this.toastr.error(err.message, 'Error', {
@@ -63,5 +62,9 @@ export class SignUpEmailFormComponent implements OnInit {
 
   get email() {
     return this.emailForm.get('email');
+  }
+
+  get userEmail(){
+    return this.email.value;
   }
 }
