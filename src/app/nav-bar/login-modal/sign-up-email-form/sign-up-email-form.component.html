@@ -4,7 +4,7 @@
     <input matInput placeholder="awesome@person.you" formControlName="email" [errorStateMatcher]="matcher">
     <mat-hint>Passwordless Sign Up</mat-hint>
     <mat-error *ngIf="email.hasError('pattern') && !email.hasError('required')">
-      Please enter a valid email address
+      Please enter a valid email addresss
     </mat-error>
     <mat-error *ngIf="email.hasError('required')">
       Email is <strong>required</strong>
