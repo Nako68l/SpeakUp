@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  appUrl: 'http://localhost:4200/',
+  appUrl: 'http://localhost:4242/',
   production: false,
   firebase: {
     apiKey: "AIzaSyBEsWNttXNc5J9s1BbTNyXypbdKZrBy9XQ",

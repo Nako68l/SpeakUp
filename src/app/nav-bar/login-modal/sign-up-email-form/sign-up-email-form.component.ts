@@ -52,10 +52,7 @@ export class SignUpEmailFormComponent implements OnInit {
       this.onSignUp.emit(this.userEmail);
       this.emailSent = true;
     } catch (err) {
-      this.toastr.error(err.message, 'Error', {
-        progressBar: true,
-        timeOut: 6000
-      })
+      this.toastr.error(err.message, 'Error')
     }
     this.sendingEmail = false;
   }

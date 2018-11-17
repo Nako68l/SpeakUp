@@ -35,12 +35,15 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'speak-up'),
-    AngularFirestoreModule, 
+    AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     MaterialElementsModule,
     FontAwesomeModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      progressBar: true,
+      timeOut: 6000
+    }),
     HelpersModule,
 
     HomeModule,

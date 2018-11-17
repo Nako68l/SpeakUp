@@ -3,6 +3,7 @@ import { FirebaseAuth } from '@angular/fire';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-account-settings',
@@ -14,7 +15,8 @@ export class AccountSettingsComponent implements OnInit {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -40,7 +42,7 @@ export class AccountSettingsComponent implements OnInit {
         window.localStorage.removeItem('emailForSignIn');
       }
     } catch (err) {
-      console.log(err);
+      this.toastr.error(err.message, 'Error')
     }
   }
 
