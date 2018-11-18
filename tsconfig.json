@@ -5,6 +5,9 @@
     "paths": {
       "@helpers/*": [
         "app/helpers/*"
+      ],
+      "@styles/*": [
+        "app/styles/*"
       ]
     },
     "outDir": "./dist/out-tsc",

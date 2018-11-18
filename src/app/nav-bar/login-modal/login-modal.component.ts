@@ -7,8 +7,8 @@ import { MatDialogRef } from '@angular/material';
   styleUrls: ['./login-modal.component.scss']
 })
 export class LoginModalComponent implements OnInit {
-  userEmail:string;
-  
+  userEmail: string;
+
   constructor(
     public dialogRef: MatDialogRef<LoginModalComponent>
   ) { }
@@ -16,15 +16,15 @@ export class LoginModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClose(){
+  onClose() {
     this.dialogRef.close();
   }
 
-  onEmailSignUp(e){
+  onEmailSignUp(e) {
     this.userEmail = e;
   }
 
-  goToLogin(){
+  goToLogin() {
     this.userEmail = ''
   }
 }

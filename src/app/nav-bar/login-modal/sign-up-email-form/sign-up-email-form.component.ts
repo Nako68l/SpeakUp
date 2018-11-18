@@ -3,7 +3,6 @@ import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { SignUpEmailErrorStateMatcher } from '@helpers/sign-up-email-error-state-matcher/sign-up-email-error-state-matcher';
 import { environment } from 'environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
 import { emailRegEx } from '@helpers/helper-variables';
 import { ToastrService } from 'ngx-toastr';
 
@@ -37,7 +36,6 @@ export class SignUpEmailFormComponent implements OnInit {
 
   async sendEmailLink() {
     this.sendingEmail = true;
-
     const actionCodeSettings = {
       url: environment.appUrl + 'account/settings',
       handleCodeInApp: true,
@@ -48,6 +46,7 @@ export class SignUpEmailFormComponent implements OnInit {
         this.userEmail,
         actionCodeSettings
       );
+      //TODO: move work with storage to the service
       window.localStorage.setItem('emailForSignIn', this.userEmail);
       this.onSignUp.emit(this.userEmail);
       this.emailSent = true;
@@ -61,7 +60,7 @@ export class SignUpEmailFormComponent implements OnInit {
     return this.emailForm.get('email');
   }
 
-  get userEmail(){
+  get userEmail() {
     return this.email.value;
   }
 }
