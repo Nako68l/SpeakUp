@@ -4,7 +4,7 @@ import { LoginModalComponent } from './login-modal.component';
 import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
-fdescribe('LoginModalComponent', () => {
+describe('LoginModalComponent', () => {
   let component: LoginModalComponent;
   let fixture: ComponentFixture<LoginModalComponent>;
   let debugElement: DebugElement;
