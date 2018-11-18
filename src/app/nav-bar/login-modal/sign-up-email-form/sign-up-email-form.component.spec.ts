@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService, Toast, ActiveToast } from 'ngx-toastr';
 import { environment } from 'environments/environment';
 
-fdescribe('SignUpEmailFormComponent', () => {
+describe('SignUpEmailFormComponent', () => {
   let fixture: ComponentFixture<SignUpEmailFormComponent>;
   let debugElement: DebugElement;
   let component: SignUpEmailFormComponent;
