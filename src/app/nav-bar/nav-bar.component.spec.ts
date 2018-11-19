@@ -6,7 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
-fdescribe('NavBarComponent', () => {
+describe('NavBarComponent', () => {
   let component: NavBarComponent;
   let fixture: ComponentFixture<NavBarComponent>;
   let debugElement: DebugElement;

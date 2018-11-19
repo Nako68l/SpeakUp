@@ -10,7 +10,6 @@ export class AccountComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('Account C');
   }
 
 }

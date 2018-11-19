@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { StorageService } from 'app/services/storage/storage.service';
 
 @Component({
   selector: 'app-account-settings',
@@ -11,16 +12,18 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./account-settings.component.scss']
 })
 export class AccountSettingsComponent implements OnInit {
-  user: Observable<firebase.User>
+  user$: Observable<firebase.User>
+  emailStorageKey: string = 'emailForSignIn'
 
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private storage: StorageService,
   ) { }
 
   ngOnInit() {
-    this.user = this.afAuth.authState;
+    this.user$ = this.afAuth.authState;
 
     const url = this.router.url;
 
@@ -30,16 +33,14 @@ export class AccountSettingsComponent implements OnInit {
   async confirmSignIn(url) {
     try {
       if (this.afAuth.auth.isSignInWithEmailLink(url)) {
-        let email = window.localStorage.getItem('emailForSignIn');
-  
-        // If missing email, prompt user for it
+        let email = this.storage.get(this.emailStorageKey);
+
         if (!email) {
           email = window.prompt('Please provide your email for confirmation');
         }
-  
-        // Signin user and remove the email localStorage
+
         const result = await this.afAuth.auth.signInWithEmailLink(email, url);
-        window.localStorage.removeItem('emailForSignIn');
+        this.storage.remove(this.emailStorageKey);
       }
     } catch (err) {
       this.toastr.error(err.message, 'Error')
