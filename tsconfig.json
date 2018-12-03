@@ -5,6 +5,9 @@
     "paths": {
       "@helpers/*": [
         "app/helpers/*"
+      ],
+      "@validators/*": [
+        "app/common/validators/*"
       ]
     },
     "outDir": "./dist/out-tsc",

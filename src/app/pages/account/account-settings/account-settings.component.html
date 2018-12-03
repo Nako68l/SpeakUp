@@ -2,3 +2,15 @@
   Hello fellow User
   {{user | json}}
 </p>
+<form [formGroup]="userDetailsForm">
+  <mat-form-field>
+    <input autocomplete="off" matInput placeholder="Nickname" formControlName="nickname">
+    <mat-error *ngIf="nickname.required">
+      Username is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="nicknameIsTaken">
+        Username is taken
+      </mat-error>
+      <mat-spinner *ngIf="nickname.pending"></mat-spinner>
+  </mat-form-field>
+</form>

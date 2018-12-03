@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit {
   }
 
   onLogin(){
-    this.dialog.open(LoginModalComponent, {  width: '265px', height: '260px',autoFocus: false })
+    this.dialog.open(LoginModalComponent, { autoFocus: false })
   }
 
   onLogout(){
