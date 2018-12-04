@@ -1,6 +1,4 @@
 <p *ngIf="user$ | async as user">
   Hello fellow User
-  <!-- TODO: FIX THIS STUFF IN TEST. DOES NOT WORKING ON detectChanges()
-     Maybe I need to waite for some async shit or stuff...T-T -->
   {{user | json}}
 </p>

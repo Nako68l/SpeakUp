@@ -24,10 +24,14 @@ import { HelpersModule } from './helpers/helpers.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavBarModule } from './nav-bar/nav-bar.module';
 import { ToastrModule } from 'ngx-toastr';
+import { BasicPopupDirective } from './directives/basic-popup/basic-popup.directive';
+import { BasicPopupComponent } from './componentns/basic-popup/basic-popup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    BasicPopupDirective,
+    BasicPopupComponent,
   ],
   imports: [
     ReactiveFormsModule,

@@ -1,0 +1,6 @@
+<div class="popup-wrapper" [hidden]="!showPopup"]>
+  <div class="popup-card">
+      <img class="popup-card__close-button" (click)="toggle()" src="/assets/icons/close.svg" type="image/svg+xml" alt="">
+    <ng-content></ng-content>
+  </div>
+</div>
