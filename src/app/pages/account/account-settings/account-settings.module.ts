@@ -18,6 +18,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     MaterialElementsModule
   ],
-  declarations: [AccountSettingsComponent]
+  declarations: [AccountSettingsComponent],
 })
 export class AccountSettingsModule { }

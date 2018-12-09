@@ -10,20 +10,22 @@ import { Observable } from 'rxjs';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  user: Observable<firebase.User>
+  user: Observable<firebase.User>;
 
-  constructor(public dialog: MatDialog,
-              private afAuth: AngularFireAuth) { }
+  constructor(
+    public dialog: MatDialog,
+    private afAuth: AngularFireAuth
+  ) { }
 
   ngOnInit() {
     this.user = this.afAuth.authState;
   }
 
-  onLogin(){
-    this.dialog.open(LoginModalComponent, { autoFocus: false })
+  onLogin() {
+    this.dialog.open(LoginModalComponent, { width: '265px', height: '260px', autoFocus: false });
   }
 
-  onLogout(){
+  onLogout() {
     this.afAuth.auth.signOut();
     console.log(this.user);
   }
