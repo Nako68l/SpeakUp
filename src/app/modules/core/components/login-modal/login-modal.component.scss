@@ -1,0 +1,40 @@
+@import 'variables';
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    button:nth-child(2) {
+        margin: 0.7rem 0;
+    }
+    .facebook-btn {
+        background-color: #4267B2;
+        color: white;
+        fa-icon {
+            margin-right: 0.6rem;
+            font-size: 1.5rem;
+            line-height: 0;
+        }
+    }
+    .google-btn {
+        color: dimgray;
+        img {
+            height: 32px;
+            margin: 0 0.2rem 0.2rem -1.4rem;
+        }        
+    }
+}
+.email-sent__info-block{
+    @include centered;
+    position: relative;
+    height: 100%;
+    text-align: center;
+    strong{
+        font-size: 1.5rem;
+    }
+    mat-icon {
+        align-self: flex-start;
+        position: absolute;
+        left: 0;
+        cursor: pointer;
+    }
+}

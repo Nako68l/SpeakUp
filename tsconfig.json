@@ -4,10 +4,10 @@
     "baseUrl": "src",
     "paths": {
       "@helpers/*": [
-        "app/helpers/*"
+        "app/shared/helpers/*"
       ],
       "@validators/*": [
-        "app/common/validators/*"
+        "app/shared/validators/*"
       ]
     },
     "outDir": "./dist/out-tsc",

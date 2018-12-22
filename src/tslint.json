@@ -12,6 +12,13 @@
             "element",
             "app",
             "kebab-case"
-        ]
+        ],
+        "eofline": false,
+        "indent": [
+            true,
+            "spaces",
+            4
+        ],
+        "component-class-suffix": [true, "Component", "Page"]
     }
 }

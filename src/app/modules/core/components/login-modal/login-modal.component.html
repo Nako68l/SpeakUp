@@ -1,0 +1,17 @@
+<div class="modal-content" *ngIf="!userEmail">
+  <button class="google-btn" mat-raised-button>
+    <img src="/src/assets/icons/btn_google_light_normal_ios-2.png" alt="G">
+    Continue with Google
+  </button>
+  <button class="facebook-btn" mat-raised-button>
+    <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+    Continue with Facebook
+  </button>
+  <app-sign-up-email-form (signUp)="onEmailSignUp($event)"></app-sign-up-email-form>
+</div>
+<div class="email-sent__info-block" *ngIf="userEmail">
+  <mat-icon (click)="goToLogin()">arrow_back_ios</mat-icon>
+  <p>
+    We send registration link on your email <strong><code>{{userEmail}}</code></strong> <br>
+  </p>
+</div>
