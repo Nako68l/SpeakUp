@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <label id="avatar-input__label" for="avatar-input">
+        <img class="arrow-dashed" src="/assets/icons/arrow-dashed.svg" alt="arrow-dashed">
+        <img class="arrow" src="/assets/icons/arrow.svg" alt="arrow">
+    </label>
+    <input type="file" id="avatar-input" (change)="uploadImage($event)" />
+    <img *ngIf="downloadURL | async as url" [src]="url"  alt="loaded image"/>
+    <div *ngIf="(uploadPercent | async) && (uploadPercent | async) < 100">{{ uploadPercent | async }}</div>
+</div>

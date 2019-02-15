@@ -56,6 +56,9 @@ library.add(faFacebook, faGoogle);
     exports: [
         NavBarComponent,
         RouterModule
+    ],
+    entryComponents: [
+        LoginModalComponent
     ]
 })
 export class CoreModule {

@@ -3,16 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  appUrl: 'http://localhost:4242/',
-  production: false,
-  firebase: {
-    apiKey: "AIzaSyBEsWNttXNc5J9s1BbTNyXypbdKZrBy9XQ",
-    authDomain: "speak-up24.firebaseapp.com",
-    databaseURL: "https://speak-up24.firebaseio.com",
-    projectId: "speak-up24",
-    storageBucket: "speak-up24.appspot.com",
-    messagingSenderId: "827366485601"
-  }
+    appUrl: 'http://localhost:4242/',
+    production: false,
+    firebase: {
+        apiKey: 'AIzaSyBEsWNttXNc5J9s1BbTNyXypbdKZrBy9XQ',
+        authDomain: 'speak-up24.firebaseapp.com',
+        databaseURL: 'https://speak-up24.firebaseio.com',
+        projectId: 'speak-up24',
+        storageBucket: 'speak-up24.appspot.com',
+        messagingSenderId: '827366485601'
+    }
 };
 
 /*

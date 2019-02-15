@@ -18,6 +18,4 @@
   </mat-form-field>
 </form>
 
-<input type="file" (change)="uploadImage($event)" />
-<div>{{ uploadPercent | async }}</div>
-<img [src]="downloadURL | async"  alt="loaded image"/>
+<app-avatar-upload></app-avatar-upload>

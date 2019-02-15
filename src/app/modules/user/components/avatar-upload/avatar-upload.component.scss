@@ -1,0 +1,23 @@
+.wrapper {
+    #avatar-input {
+        display: none;
+    }
+
+    #avatar-input__label {
+        .arrow-dashed {
+            display: none;
+        }
+
+
+        &:hover {
+            .arrow {
+                display: none;
+            }
+
+            .arrow-dashed {
+                display: inline-block;
+            }
+        }
+    }
+
+}

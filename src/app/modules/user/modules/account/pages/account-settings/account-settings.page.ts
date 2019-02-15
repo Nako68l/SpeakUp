@@ -23,15 +23,12 @@ export class AccountSettingsPage implements OnInit {
 
     userDetailsForm: FormGroup;
     user: Observable<firebase.User>;
-    uploadPercent;
-    downloadURL;
 
     constructor(
         private afAuth: AngularFireAuth,
         private router: Router,
         private toastr: ToastrService,
         private fb: FormBuilder,
-        private storage: FileStorageService,
         private usernameValidator: UsernameValidator
     ) {
     }
@@ -76,10 +73,6 @@ export class AccountSettingsPage implements OnInit {
         } catch (err) {
             this.toastr.error(err.message, 'Error');
         }
-    }
-
-    uploadImage($event) {
-        [this.uploadPercent, this.downloadURL] = this.storage.upload('userPhoto', $event);
     }
 
     get nickname(): FormControl {
