@@ -1,0 +1,21 @@
+<p *ngIf="(user | async)">Hello fellow User {{ user | json }}</p>
+<form [formGroup]="userDetailsForm">
+  <mat-form-field>
+    <mat-label>Nickname</mat-label>
+    <input
+      autocomplete="off"
+      matInput
+      placeholder="rainbow_unicorn"
+      formControlName="nickname"
+      [errorStateMatcher]="instantlyAppearErrorsMatcher"
+    />
+    <mat-error *ngFor="let validation of validationMessages.nickname">
+      <mat-error *ngIf="nickname.hasError(validation.type)" [innerHTML]="validation.message"></mat-error>
+    </mat-error>
+    <mat-spinner matSuffix *ngIf="nickname.pending" [diameter]="19"></mat-spinner>
+    <mat-icon matSuffix *ngIf="nickname.dirty && nickname.invalid" color="warn">error</mat-icon>
+    <mat-icon matSuffix *ngIf="nickname.valid" color="primary">check</mat-icon>
+  </mat-form-field>
+</form>
+
+<app-avatar-upload></app-avatar-upload>

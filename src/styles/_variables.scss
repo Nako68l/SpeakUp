@@ -1,0 +1,9 @@
+
+$speakup-primary: #3f51b5;
+
+
+@mixin centered {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}

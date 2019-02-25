@@ -3,21 +3,21 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SpeakUp2": {
+    "speakup": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "styleext": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/SpeakUp2",
+            "outputPath": "dist/speakup",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,10 +27,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles/styles.scss"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -62,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SpeakUp2:build"
+            "browserTarget": "speakup:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "SpeakUp2:build:production"
+              "browserTarget": "speakup:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SpeakUp2:build"
+            "browserTarget": "speakup:build"
           }
         },
         "test": {
@@ -84,6 +89,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": [],
@@ -107,7 +113,7 @@
         }
       }
     },
-    "SpeakUp2-e2e": {
+    "speakup-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +122,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "SpeakUp2:serve"
+            "devServerTarget": "speakup:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "SpeakUp2:serve:production"
+              "devServerTarget": "speakup:serve:production"
             }
           }
         },
@@ -136,5 +142,5 @@
       }
     }
   },
-  "defaultProject": "SpeakUp2"
+  "defaultProject": "speakup"
 }

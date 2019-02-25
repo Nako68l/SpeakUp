@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" role="heading">
+  <span>Speak Up</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <button mat-button (click)="onLogout()" *ngIf="user | async; else login"> Logout</button>
+
+  <ng-template #login>
+    <button mat-button (click)="onLogin()"> Login</button>
+  </ng-template>
+</mat-toolbar>
