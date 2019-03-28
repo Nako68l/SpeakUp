@@ -1,5 +1,7 @@
 <div class="modal-content" *ngIf="!userEmail">
-  <button class="google-btn" mat-raised-button>
+  <button class="google-btn"
+          (click)="signUpGoogle()"
+          mat-raised-button>
     <img src="/assets/icons/btn_google_light_normal_ios-2.png" alt="G">
     Continue with Google
   </button>

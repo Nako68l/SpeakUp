@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import { AuthService } from '@services/auth/auth.service';
 
 @Component({
     selector: 'app-login-modal',
@@ -10,7 +11,8 @@ export class LoginModalComponent implements OnInit {
     userEmail: string;
 
     constructor(
-        public dialogRef: MatDialogRef<LoginModalComponent>
+        public dialogRef: MatDialogRef<LoginModalComponent>,
+        private auth: AuthService
     ) {
     }
 
@@ -27,5 +29,9 @@ export class LoginModalComponent implements OnInit {
 
     goToLogin() {
         this.userEmail = '';
+    }
+
+    signUpGoogle() {
+        this.auth.googleSignIn();
     }
 }
