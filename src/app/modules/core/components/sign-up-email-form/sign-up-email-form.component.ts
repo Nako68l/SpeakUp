@@ -1,10 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { environment } from 'environments/environment';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { SignUpEmailErrorStateMatcher } from '@helpers/error-state-matcher/sign-up-email-error-state-matcher';
 import { emailRegEx } from '@helpers/helper-variables';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '@services/auth/auth.service';
 
 @Component({
     selector: 'app-sign-up-email-form',
@@ -21,8 +20,8 @@ export class SignUpEmailFormComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private afAuth: AngularFireAuth,
-        private toastr: ToastrService
+        private toastr: ToastrService,
+        private auth: AuthService
     ) {
     }
 
@@ -37,24 +36,19 @@ export class SignUpEmailFormComponent implements OnInit {
 
     async sendEmailLink() {
         this.sendingEmail = true;
+        this.auth.passwordlessSignIn(this.userEmail)
+            .then(this.onEmailSuccess)
+            .catch(this.onEmailError)
+            .finally(() => this.sendingEmail = false);
+    }
 
-        const actionCodeSettings = {
-            url: environment.appUrl + 'account/settings',
-            handleCodeInApp: true,
-        };
+    private onEmailSuccess = () => {
+        this.signUp.emit(this.userEmail);
+        this.emailSent = true;
+    }
 
-        try {
-            await this.afAuth.auth.sendSignInLinkToEmail(
-                this.userEmail,
-                actionCodeSettings
-            );
-            window.localStorage.setItem('emailForSignIn', this.userEmail);
-            this.signUp.emit(this.userEmail);
-            this.emailSent = true;
-        } catch (err) {
-            this.toastr.error(err.message, 'Error');
-        }
-        this.sendingEmail = false;
+    private onEmailError = err => {
+        this.toastr.error(err.message, 'Error');
     }
 
     get email() {

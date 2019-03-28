@@ -4,9 +4,16 @@ import { AccountPage } from './account.page';
 
 const routes: Routes = [
     {
-        path: '', component: AccountPage,
+        path: '',
         children: [
-            { path: 'settings', loadChildren: '../account-settings/account-settings.module#AccountSettingsModule' },
+            {
+                path: '',
+                component: AccountPage
+            },
+            {
+                path: 'settings',
+                loadChildren: '../account-settings/account-settings.module#AccountSettingsModule'
+            },
         ]
     },
 ];

@@ -19,7 +19,7 @@ export class LoginModalComponent implements OnInit {
     ngOnInit() {
     }
 
-    onClose() {
+    closeModal() {
         this.dialogRef.close();
     }
 
@@ -32,6 +32,8 @@ export class LoginModalComponent implements OnInit {
     }
 
     signUpGoogle() {
-        this.auth.googleSignIn();
+        this.auth.googleSignIn().then(() =>
+            this.closeModal()
+        );
     }
 }

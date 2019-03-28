@@ -6,12 +6,13 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { auth } from 'firebase/app';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    private $user: Observable<User>;
+    $user: Observable<User>;
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -45,6 +46,19 @@ export class AuthService {
     async signOut() {
         await this.afAuth.auth.signOut();
         return this.router.navigate(['/']);
+    }
+
+    async passwordlessSignIn(userEmail) {
+        const actionCodeSettings = {
+            url: environment.appUrl + 'account/settings',
+            handleCodeInApp: true,
+        };
+
+        await this.afAuth.auth.sendSignInLinkToEmail(
+            userEmail,
+            actionCodeSettings
+        );
+        window.localStorage.setItem('emailForSignIn', userEmail);
     }
 
     private updateUserData({ uid, email, displayName, photoURL }: User) {
