@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -29,7 +29,7 @@ export class AccountSettingsPage implements OnInit {
         private router: Router,
         private toastr: ToastrService,
         private fb: FormBuilder,
-        private usernameValidator: UsernameValidator
+        private usernameValidator: UsernameValidator,
     ) {
     }
 

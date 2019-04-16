@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { User } from '@shared/models/user';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { auth } from 'firebase/app';
 import { environment } from '../../../../environments/environment';
+import { FirestoreDataService } from '@services/firestore/firestore-data.service';
 
 @Injectable({
     providedIn: 'root'
@@ -16,8 +16,8 @@ export class AuthService {
 
     constructor(
         private afAuth: AngularFireAuth,
-        private afs: AngularFirestore,
-        private router: Router
+        private router: Router,
+        private firestoreData: FirestoreDataService
     ) {
         this.$user = this.getUserObservable();
     }
@@ -29,23 +29,16 @@ export class AuthService {
         return this.afAuth.authState.pipe(
             switchMap(user =>
                 user ?
-                    this.getUserRef(user.uid).valueChanges() :
+                    this.firestoreData.user(user.uid).valueChanges() :
                     defaultUser
             )
         );
     }
 
-    private getUserRef = (uid): AngularFirestoreDocument<User> => this.afs.doc<User>(`users/${ uid }`);
-
     async googleSignIn() {
         const provider = new auth.GoogleAuthProvider();
         const credential = await this.afAuth.auth.signInWithPopup(provider);
         return this.updateUserData(credential.user);
-    }
-
-    async signOut() {
-        await this.afAuth.auth.signOut();
-        return this.router.navigate(['/']);
     }
 
     async passwordlessSignIn(userEmail) {
@@ -62,7 +55,7 @@ export class AuthService {
     }
 
     private updateUserData({ uid, email, displayName, photoURL }: User) {
-        const userRef = this.getUserRef(uid);
+        const userRef = this.firestoreData.user(uid);
 
         const data = {
             uid,
@@ -71,6 +64,12 @@ export class AuthService {
             photoURL
         };
 
+
         return userRef.set(data, { merge: true });
+    }
+
+    async signOut() {
+        await this.afAuth.auth.signOut();
+        return this.router.navigate(['/']);
     }
 }

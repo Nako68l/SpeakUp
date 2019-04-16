@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AccountSettingsPage } from './account-settings.page';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@shared/material/material.module';
 
 const routes: Routes = [
     { path: '', component: AccountSettingsPage },
@@ -15,7 +16,8 @@ const routes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MaterialModule
     ]
 })
 export class AccountSettingsModule {
