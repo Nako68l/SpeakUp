@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { debounceTime, map, take } from 'rxjs/operators';
+import { Observable, timer } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { FirestoreDataService } from '@services/firestore/firestore-data.service';
 
@@ -16,15 +16,17 @@ export class UsernameValidator {
 
     unique() {
         return (ctrl: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
-            const username = ctrl.value.toLowerCase();
+            return timer(500).pipe(switchMap(() => {
+                    const username = ctrl.value.toLowerCase();
 
-            return this.firestoreData.username(username)
-                .valueChanges()
-                .pipe(
-                    debounceTime(500),
-                    take(1),
-                    map(this.nicknameIsTaken)
-                );
+                    return this.firestoreData.username(username)
+                        .valueChanges()
+                        .pipe(
+                            take(1),
+                            map(this.nicknameIsTaken)
+                        );
+                }
+            ));
         };
     }
 
