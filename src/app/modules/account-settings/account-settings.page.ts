@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ShowOnDirtyErrorStateMatcher } from '@angular/material';
 import * as firebase from 'firebase';
-import { UsernameValidator } from '@validators/username.validator';
+import { UserValidator } from '@validators/user-validator.service';
 import { FileStorageService } from '@services/file-storage/file-storage.service';
 import { accountValidationMessages } from '@hard-data/validation-messages/account.validation-messages';
 
@@ -29,7 +29,7 @@ export class AccountSettingsPage implements OnInit {
         private router: Router,
         private toastr: ToastrService,
         private fb: FormBuilder,
-        private usernameValidator: UsernameValidator,
+        private userValidator: UserValidator,
     ) {
     }
 
@@ -50,7 +50,7 @@ export class AccountSettingsPage implements OnInit {
                 Validators.pattern('[a-zA-Z0-9_.]+'),
                 Validators.maxLength(25)
             ], [
-                this.usernameValidator.unique()
+                this.userValidator.uniqueUsername()
             ]]
         });
     }

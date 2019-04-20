@@ -7,14 +7,14 @@ import { FirestoreDataService } from '@services/firestore/firestore-data.service
 @Injectable({
     providedIn: 'root'
 })
-export class UsernameValidator {
+export class UserValidator {
 
     constructor(
         private firestoreData: FirestoreDataService
     ) {
     }
 
-    unique() {
+    uniqueUsername() {
         return (ctrl: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
             return timer(500).pipe(switchMap(() => {
                     const username = ctrl.value.toLowerCase();
